@@ -23,17 +23,17 @@ All the above main functionalities were incorporated by builiding a functional, 
 
 ### System Architecture Design:
 
-<img src="https://github.com/Archita22ind/UberEats-Prototype/blob/main/images/systemarch.png" >
+<img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/systemarch.png" >
 
 ### Few screen captures of the application:
 
-<img src="https://github.com/Archita22ind/UberEats-Prototype/blob/main/images/loginPage.png" >
+<img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/loginPage.png" >
 
-<img src="https://github.com/Archita22ind/UberEats-Prototype/blob/main/images/glimpseofapp.png" >
+<img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/glimpseofapp.png" >
 
-<img src="https://github.com/Archita22ind/UberEats-Prototype/blob/main/images/glimpse1.png" >
+<img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/glimpse1.png" >
 
-<img src="https://github.com/Archita22ind/UberEats-Prototype/blob/main/images/orderstatus.png" >
+<img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/orderstatus.png" >
 
 ## Getting Started with the Github repository-
 
