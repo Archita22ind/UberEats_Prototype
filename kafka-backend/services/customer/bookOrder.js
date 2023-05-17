@@ -1,0 +1,30 @@
+import Orders from "../../Models/OrdersModel";
+
+const handle_request = async (orderDetails, callback) => {
+  let ts = Date.now();
+  let date_ob = new Date(ts);
+  try {
+    let order = await Orders.findOne({
+      customerId: orderDetails.customerId,
+      finalStatus: "New",
+    }).exec();
+
+    if (order) {
+      Orders.updateOne(order, {
+        totalPrice: orderDetails.totalPrice.toFixed(2),
+        totalQuantity: orderDetails.totalItems,
+        specialInstructions: orderDetails.specialInstructions,
+        dateOrdered: date_ob,
+        finalStatus: "New Order",
+      }).exec();
+
+      callback(null, {
+        message: "order booked",
+      });
+    }
+  } catch (exception) {
+    callback({ message: exception }, null);
+  }
+};
+
+export default handle_request;
