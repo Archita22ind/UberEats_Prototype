@@ -44,7 +44,7 @@ const RestaurantLogin = (props) => {
     dispatch(request({ userEmail }));
     try {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/restaurantLoginInfo`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/auth/restaurantLoginInfo`,
         {
           method: "POST",
           headers: {

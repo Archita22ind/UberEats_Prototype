@@ -1,40 +1,47 @@
 const mongoose = require("mongoose");
-const config = require("./kafka/config");
+const config = require("./kafka/config")
 const connection = require("./kafka/Connection");
 
 // Import all services
 const LoginCustomer = require("./services/customer/login.js");
 const RegisterCustomer = require("./services/customer/customerSignUpInfo");
-const LoginRestaurant = require("./services/restaurant/restaurantLoginInfo");
-const RegisterRestaurant = require("./services/restaurant/restaurantSignUpInfo");
-const RestaurantDetails = require("./services/restaurant/restaurantDetailsInfo");
-const FoodDetails = require("./services/restaurant/foodItemsDisplay");
-const RestaurantDetailsUpdate = require("./services/restaurant/restaurantDetailsInfoUpdate");
-const AddDish = require("./services/restaurant/addFoodDishes");
-const EditDish = require("./services/restaurant/editFoodDishes");
-const ShowCustomerProfile = require("./services/restaurant/showCustomerProfile");
-const RestaurantOrders = require("./services/restaurant/getRestaurantOrders");
-const RestaurantOrderDetails = require("./services/restaurant/showRestaurantOrderDetails");
-const OrderStatusUpdate = require("./services/restaurant/updateOrderStatus");
-const ReceiptDetails = require("./services/customer/getReceiptDetails");
+const LoginRestaurant = require("./services/restaurantService/restaurantLoginInfo");
+const RegisterRestaurant = require("./services/restaurantService/restaurantSignUpInfo");
+const RestaurantDetails = require("./services/restaurantService/restaurantDetailsInfo");
+const FoodDetails = require("./services/restaurantService/foodItemsDisplay");
+const RestaurantDetailsUpdate = require("./services/restaurantService/restaurantDetailsInfoUpdate");
+const AddDish = require("./services/restaurantService/addFoodDishes");
+const EditDish = require("./services/restaurantService/editFoodDishes");
+const ShowCustomerProfile = require("./services/restaurantService/showCustomerProfile");
+const RestaurantOrders = require("./services/restaurantService/getRestaurantOrders");
+const RestaurantOrderDetails = require("./services/restaurantService/showRestaurantOrderDetails");
+const OrderStatusUpdate = require("./services/restaurantService/updateOrderStatus");
+const ReceiptDetails = require("./services/orderService/getReceiptDetails");
 const CustomerLocation = require("./services/customer/getCustomerLocation");
 const ProfileInfo = require("./services/customer/getProfileInfo");
 const UpdateProfileInfo = require("./services/customer/updateProfileInfo");
 const DeliveryAddress = require("./services/customer/getDeliveryAddress");
 const DeliveryType = require("./services/customer/getDeliveryType");
 const AddDeliveryAddress = require("./services/customer/addDeliveryAddress");
-const Bookorder = require("./services/customer/bookOrder");
-const OrderTotal = require("./services/customer/getOrderTotal");
-const PastOrders = require("./services/customer/getPastOrders");
+const Bookorder = require("./services/orderService/bookOrder");
+const OrderTotal = require("./services/orderService/getOrderTotal");
+const PastOrders = require("./services/orderService/getPastOrders");
 const CartDetails = require("./services/customer/showCartDetails");
 const FavoriteRestaurant = require("./services/customer/getFavoriteRestaurants");
 const CreateFavorite = require("./services/customer/createFavouritesList");
+// beforre commandpattern
 const UpdateCartDetails = require("./services/customer/updateCartOrderDetails");
-const NewOrder = require("./services/customer/createNewOrder");
-const ListOfRestaurants = require("./services/restaurant/getListOfRestaurants").default;
-const AddOrdertoCart = require("./services/restaurant/addOrdertoCart");
-const TypeaheadList = require("./services/restaurant/getTypeaheadList");
+// after commandpattern
+// const UpdateCartDetails = require("./services/customer/cart/cartService");
 
+const NewOrder = require("./services/orderService/createNewOrder");
+const ListOfRestaurants = require("./services/restaurantService/getListOfRestaurants");
+
+// const AddOrdertoCart = require("./services/restaurantService/addOrdertoCart"); //working currently
+const AddOrdertoCart = require("./services/customer/cart/cartService");
+const TypeaheadList = require("./services/restaurantService/getTypeaheadList");
+
+mongoose.set("strictQuery", false);
 mongoose.connect(config.mongoose.url, config.mongoose.options, (err, res) => {
   if (err) {
     console.error("MongoDB connection failed", err);
@@ -53,17 +60,13 @@ function handleTopicRequest(topic_name, fname) {
     const data = JSON.parse(message.value);
 
     fname.handle_request(data.data, (err, res) => {
-      if (err) {
-        console.error('Error handling request', err);
-        return;
-      }
-
       const payloads = [
         {
           topic: data.replyTo,
           messages: JSON.stringify({
             correlationId: data.correlationId,
             data: res,
+            error: err,
           }),
           partition: 0,
         },
@@ -71,7 +74,7 @@ function handleTopicRequest(topic_name, fname) {
 
       producer.send(payloads, (err, data) => {
         if (err) {
-          console.error('Error sending message', err);
+          console.error('Error sending message', err.message);
         }
       });
     });

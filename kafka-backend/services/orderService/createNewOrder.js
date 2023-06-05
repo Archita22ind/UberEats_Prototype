@@ -1,5 +1,5 @@
-import Orders from "../../Models/OrdersModel";
-import OrderDetails from "../../Models/OrderDetailsModel";
+const Orders = require( "../../Models/OrdersModel");
+const OrderDetails = require(  "../../Models/OrderDetailsModel");
 
 const handle_request = async (customerDetails, callback) => {
   let customerId = customerDetails.customerId;
@@ -42,4 +42,4 @@ const handle_request = async (customerDetails, callback) => {
   }
 };
 
-export default handle_request;
+exports.handle_request = handle_request;

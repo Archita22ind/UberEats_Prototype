@@ -1,5 +1,5 @@
-import Orders from "../../Models/OrdersModel";
-import RestaurantDetails from "../../Models/RestaurantDetailsModel";
+const Orders = require( "../../Models/OrdersModel");
+const RestaurantDetails = require( "../../Models/RestaurantDetailsModel");
 
 const handle_request = async (orderDetails, callback) => {
   let order;
@@ -57,4 +57,4 @@ const handle_request = async (orderDetails, callback) => {
   }
 };
 
-export default handle_request;
+exports.handle_request = handle_request;

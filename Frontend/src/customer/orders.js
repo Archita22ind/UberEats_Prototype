@@ -32,7 +32,7 @@ const Orders = (props) => {
 
   const getReceiptDetails = async (orderId) => {
     const response = await fetch(
-      `http://${NODE_HOST}:${NODE_PORT}/getReceiptDetails`,
+      `http://${NODE_HOST}:${NODE_PORT}/v1/customerOrders/getReceiptDetails`,
       {
         method: "POST",
         headers: {
@@ -96,7 +96,7 @@ const Orders = (props) => {
 
   const onClickCancelHandler = async (orderId) => {
     const response = await fetch(
-      `http://${NODE_HOST}:${NODE_PORT}/updateOrderStatus`,
+      `http://${NODE_HOST}:${NODE_PORT}/v1/customerOrders/updateOrderStatus`,
       {
         method: "POST",
         headers: {
@@ -167,7 +167,7 @@ const Orders = (props) => {
 
   const getPastOrders = async () => {
     const response = await fetch(
-      `http://${NODE_HOST}:${NODE_PORT}/getPastOrders`,
+      `http://${NODE_HOST}:${NODE_PORT}/v1/customerOrders/getPastOrders`,
       {
         method: "POST",
         headers: {

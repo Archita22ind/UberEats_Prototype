@@ -1,4 +1,4 @@
-const config = require("./kafka/config");
+const config = ("./config");
 const kafka = require("kafka-node");
 
 function ConnectionProvider() {

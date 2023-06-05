@@ -1,10 +1,16 @@
-import SortListOfRestaurants from "./sortListOfRestaurants";
-import getCustomerDetail from "./model/getCustomerDetail";
-import GetStrategy from "./model/getListOfRestaurantsDao";
+const SortListOfRestaurants = require("./sortListOfRestaurants");
+// const GetStrategy  = require( "./model/getListOfRestaurantsDao");
+// const getCustomerDetails  = require( "./model/getCustomerDetails");
+const { getCustomerDetails } = require('./model/getCustomerDetails');
+const { getStrategy}  = require( "./model/getListOfRestaurantsDao");
+
+
 
 const handle_request = async (listDetails, callback) => {
   try {
-    const customerDetail = await getCustomerDetail(listDetails);
+
+
+    const customerDetail = await getCustomerDetails(listDetails);
 
     if (!customerDetail) throw new Error('Customer not found');
 
@@ -13,8 +19,9 @@ const handle_request = async (listDetails, callback) => {
 
     let restaurantDetail = [];
 
-    const strategy = GetStrategy(listDetails);
+    const strategy = getStrategy(listDetails);
     restaurantDetail = await strategy(listDetails);
+
 
     // if restaurantDetail is undefined or empty
     if (!restaurantDetail || restaurantDetail.length === 0) {
@@ -39,4 +46,4 @@ const handle_request = async (listDetails, callback) => {
   }
 };
   
-export default { handle_request };
+exports.handle_request = handle_request;

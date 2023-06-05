@@ -39,7 +39,7 @@ const useCartCheckoutModal = (modalShow, onHide) => {
 
     try {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/updateCartOrderDetails`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/cart/updateCartOrderDetails`,
         {
           method: "POST",
           headers: {
@@ -111,7 +111,7 @@ const useCartCheckoutModal = (modalShow, onHide) => {
   const getCartDetails = async () => {
     try {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/showCartDetails`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/cart/showCartDetails`,
         {
           method: "POST",
           headers: {

@@ -69,7 +69,7 @@ const EditDishModal = (props) => {
 
     try {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/editFoodItems`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/restaurantLandingPage/editFoodItems`,
         {
           method: "POST",
           body: formData,

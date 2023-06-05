@@ -38,7 +38,7 @@ const RestaurantList = (props) => {
   const createFavouritesList = async (restaurantId) => {
     try {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/createFavouritesList`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/customerDetails/createFavouritesList`,
         {
           method: "POST",
           headers: {

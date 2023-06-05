@@ -1,10 +1,16 @@
-import constants from "../../constants/constants";
-import RestaurantDetails from "../../../Models/RestaurantDetailsModel";
-import RestaurantDishes from "../../../Models/RestaurantDishesModel";
+const constants = require( "../../constants/constants");
+const RestaurantDetails = require( "../../../Models/RestaurantDetailsModel");
+const RestaurantDishes = require( "../../../Models/RestaurantDishesModel");
 
 // Helper function for getting delivery type
 const getDeliveryType = (listDetails) => {
-    return listDetails.deliveryType === constants.PICK_UP ? constants.PICK_UP_FLAG : constants.DELIVERY_FLAG;
+   if(listDetails.deliveryType === 'delivery'){
+    return "deliveryFlag";
+   }
+   else{
+    return "pickupFlag";
+   }
+    //return listDetails.deliveryType === constants.PICK_UP ? constants.PICK_UP_FLAG : constants.DELIVERY_FLAG;
 };
 
 // Factory for creating restaurant fetch strategies
@@ -45,14 +51,22 @@ const restaurantFetchStrategyFactory = {
     }
 };
 
-export default (listDetails) => {
-    if (!listDetails.filter && !listDetails.typeaheadValue) {
+
+const getStrategy =  (listDetails) => {
+
+    if (listDetails.filter.length === 0 && listDetails.typeaheadValue.length === 0) {
+   
       return restaurantFetchStrategyFactory.noFilterNoTypeahead;
-    } else if (listDetails.filter.length > 0 && !listDetails.typeaheadValue) {
+    } else if (listDetails.filter.length > 0 && listDetails.typeaheadValue.length === 0) {
+
       return restaurantFetchStrategyFactory.filterNoTypeahead;
     } else if (listDetails.filter.length > 0 && listDetails.typeaheadValue.length > 0) {
+
       return restaurantFetchStrategyFactory.filterWithTypeahead;
     } else {
+
       return restaurantFetchStrategyFactory.noFilterWithTypeahead;
     }
 };
+
+exports.getStrategy = getStrategy;

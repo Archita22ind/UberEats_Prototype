@@ -7,6 +7,7 @@ dotenv.config({ path: path.join(__dirname, "../../.env") });
 const envVarsSchema = Joi.object()
   .keys({
     PORT: Joi.number().default(3000),
+    NODE_PORT: Joi.number(),
     NODE_ENV: Joi.string()
       .valid("production", "development", "test")
       .required(),
@@ -34,6 +35,7 @@ module.exports = {
   AWSSecretAccessKey: envVars.SECRET_ACCESS_KEY,
   AWSBucket: envVars.BUCKET,
   env: envVars.NODE_ENV,
+  node_Port: envVars.NODE_PORT,
   secret_key: envVars.SECRET_KEY,
   mongoose: {
     url: envVars.MONGODB_URL + (envVars.NODE_ENV === "test" ? "-test" : ""),

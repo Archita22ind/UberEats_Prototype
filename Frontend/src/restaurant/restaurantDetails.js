@@ -39,7 +39,7 @@ const RestaurantDetails = (props) => {
 
   const getRestaurantProfileInfo = async () => {
     const response = await fetch(
-      `http://${NODE_HOST}:${NODE_PORT}/restaurantDetailsInfo?restaurantId=${restaurantId}`,
+      `http://${NODE_HOST}:${NODE_PORT}/v1/restaurantLandingPage/restaurantDetailsInfo?restaurantId=${restaurantId}`,
       {
         method: "GET",
         headers: {
@@ -85,7 +85,7 @@ const RestaurantDetails = (props) => {
 
   const getDishesHandler = async (event) => {
     const response = await fetch(
-      `http://${NODE_HOST}:${NODE_PORT}/foodItemsDisplay?restaurantId=${restaurantId}`,
+      `http://${NODE_HOST}:${NODE_PORT}/v1/restaurantLandingPage/foodItemsDisplay?restaurantId=${restaurantId}`,
       {
         method: "GET",
         headers: {

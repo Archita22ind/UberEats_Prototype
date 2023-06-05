@@ -67,7 +67,7 @@ const MainHeader = (props) => {
   const getCustomerLocation = async () => {
     if (!session.restaurantFlag) {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/getCustomerLocation`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/customerLandingPage/getCustomerLocation`,
         {
           method: "POST",
           headers: {
@@ -110,7 +110,7 @@ const MainHeader = (props) => {
   const optionDislayHandler = async (typeaheadInput) => {
     try {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/getTypeaheadList`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/customerLandingPage/getTypeaheadList`,
         {
           method: "POST",
           headers: {

@@ -1,6 +1,6 @@
 
-import Orders from "../../Models/OrdersModel";
-import OrderDetails from "../../Models/OrderDetailsModel";
+const Orders  = require( "../../Models/OrdersModel");
+const OrderDetails  = require( "../../Models/OrderDetailsModel");
 
 const handle_request = async (cartDetails, callback) => {
   let mainOrderId;
@@ -10,10 +10,10 @@ const handle_request = async (cartDetails, callback) => {
     return;
   }
 
-  if (!cartDetails.quantity) {
-    callback(null, { Message: "No Dish added as quantity is 0" });
-    return;
-  }
+  // if (!cartDetails.quantity) {
+  //   callback(null, { Message: "No Dish added as quantity is 0" });
+  //   return;
+  // }
 
   try {
     let order = await Orders.findOne({
@@ -68,4 +68,4 @@ const handle_request = async (cartDetails, callback) => {
   }
 };
 
-export default handle_request;
+exports.handle_request = handle_request;

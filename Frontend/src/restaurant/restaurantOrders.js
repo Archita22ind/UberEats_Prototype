@@ -85,7 +85,7 @@ const RestaurantOrders = () => {
 
   const getRestaurantOrders = async () => {
     const response = await fetch(
-      `http://${NODE_HOST}:${NODE_PORT}/getRestaurantOrders`,
+      `http://${NODE_HOST}:${NODE_PORT}/v1/restaurantOrders/getRestaurantOrders`,
       {
         method: "POST",
         headers: {
@@ -124,7 +124,7 @@ const RestaurantOrders = () => {
 
     if (updatedOrderStatus) {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/updateOrderStatus`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/restaurantOrders/updateOrderStatus`,
         {
           method: "POST",
           headers: {
@@ -148,7 +148,7 @@ const RestaurantOrders = () => {
 
   const getOrderDetails = async (orderId) => {
     const response = await fetch(
-      `http://${NODE_HOST}:${NODE_PORT}/showRestaurantOrderDetails`,
+      `http://${NODE_HOST}:${NODE_PORT}/v1/restaurantOrders/showRestaurantOrderDetails`,
       {
         method: "POST",
         headers: {
@@ -166,7 +166,7 @@ const RestaurantOrders = () => {
 
   const getCustomerDetails = async (customerId) => {
     const response = await fetch(
-      `http://${NODE_HOST}:${NODE_PORT}/showCustomerProfile`,
+      `http://${NODE_HOST}:${NODE_PORT}/v1/restaurantOrders/showCustomerProfile`,
       {
         method: "POST",
         headers: {

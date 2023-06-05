@@ -98,7 +98,7 @@ const ProfileInfo = (props) => {
 
     try {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/updateProfileInfo`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/customerDetails/updateProfileInfo`,
         {
           method: "POST",
           body: formData,
@@ -116,7 +116,7 @@ const ProfileInfo = (props) => {
 
   const getCustomerProfileInfo = async () => {
     const response = await fetch(
-      `http://${NODE_HOST}:${NODE_PORT}/getProfileInfo?customerId=${session.primaryID}`,
+      `http://${NODE_HOST}:${NODE_PORT}/v1/customerDetails/getProfileInfo?customerId=${session.primaryID}`,
       {
         method: "GET",
         headers: {

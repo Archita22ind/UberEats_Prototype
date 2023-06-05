@@ -2,6 +2,7 @@ const CustomerDetails = require("../../Models/CustomerDetailsModel");
 
 const handle_request = async (profile, callback) => {
   try {
+    
     let customerDetail = await CustomerDetails.findOne({
       _id: profile.customerId,
     });

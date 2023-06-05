@@ -42,7 +42,7 @@ const Checkout = () => {
   const getDeliveryType = async () => {
     try {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/getDeliveryType?customerId=${session.primaryID}`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/checkout/getDeliveryType?customerId=${session.primaryID}`,
         {
           method: "GET",
           headers: {
@@ -66,7 +66,7 @@ const Checkout = () => {
   const getDeliveryAddress = async () => {
     try {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/getDeliveryAddress?customerId=${session.primaryID}`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/checkout/getDeliveryAddress?customerId=${session.primaryID}`,
         {
           method: "GET",
           headers: {
@@ -89,7 +89,7 @@ const Checkout = () => {
   const showOrderTotal = React.useCallback(async () => {
     try {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/getOrderTotal?customerId=${session.primaryID}`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/checkout/getOrderTotal?customerId=${session.primaryID}`,
         {
           method: "GET",
           headers: {
@@ -126,7 +126,7 @@ const Checkout = () => {
     ) {
       try {
         const response = await fetch(
-          `http://${NODE_HOST}:${NODE_PORT}/bookOrder`,
+          `http://${NODE_HOST}:${NODE_PORT}/v1/checkout/bookOrder`,
           {
             method: "POST",
             headers: {
@@ -169,7 +169,7 @@ const Checkout = () => {
 
     try {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/addDeliveryAddress`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/checkout/addDeliveryAddress`,
         {
           method: "POST",
           headers: {
@@ -189,8 +189,6 @@ const Checkout = () => {
       console.log(error);
     }
   };
-
-  //
 
   const showOrderBookedModal = () => {
     return show ? (

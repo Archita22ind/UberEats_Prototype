@@ -27,7 +27,7 @@ const RestaurantSearch = (props) => {
   const fetchFilteredRestaurants = React.useCallback(async () => {
     try {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/getListOfRestaurants`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/customerLandingPage/getListOfRestaurants`,
         {
           method: "POST",
           headers: {

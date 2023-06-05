@@ -1,4 +1,5 @@
-import Orders from "../../Models/OrdersModel";
+// import Orders from "../../Models/OrdersModel";
+const Orders = require("../../Models/OrdersModel");
 
 const handle_request = async (orderStatus, callback) => {
   try {
@@ -34,4 +35,4 @@ const handle_request = async (orderStatus, callback) => {
   }
 };
 
-export default handle_request;
+exports.handle_request = handle_request;

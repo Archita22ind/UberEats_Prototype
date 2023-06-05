@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
+    "http-status": "^1.6.2",
     "joi": "^17.9.2",
     "kafka-node": "^5.0.0",
     "kafkajs": "^1.15.0",

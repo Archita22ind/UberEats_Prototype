@@ -6,7 +6,7 @@ const session = getSessionCookie();
 const getFavoriteRestaurants = async () => {
   try {
     const response = await fetch(
-      `http://${NODE_HOST}:${NODE_PORT}/getFavoriteRestaurants`,
+      `http://${NODE_HOST}:${NODE_PORT}/v1/customerDetails/getFavoriteRestaurants`,
       {
         method: "POST",
         headers: {

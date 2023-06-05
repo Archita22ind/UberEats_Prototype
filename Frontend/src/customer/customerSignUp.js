@@ -83,7 +83,7 @@ const CustomerSignUp = (props) => {
 
     try {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/customerSignUpInfo`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/auth/customerSignUpInfo`,
         {
           method: "POST",
           headers: {

@@ -1,4 +1,4 @@
-
+// const con = require("../../Controller/Common/dbConnection");
 const OrderDetails = require("../../Models/OrderDetailsModel");
 const RestaurantDetails = require("../../Models/RestaurantDetailsModel");
 
@@ -9,7 +9,7 @@ const handle_request = async (cartDetails, callback) => {
         _id: cartDetails._id,
       }).exec();
 
-  
+      // callback(null, []);
     } else {
       let orderDetail = await OrderDetails.findOne({
         _id: cartDetails._id,

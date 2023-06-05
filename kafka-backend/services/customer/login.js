@@ -21,7 +21,7 @@ const handle_request = async (signInDetails, callback) => {
 
       callback(null, { token: `JWT ${token}` });
     } else {
-      callback({ message: "Incorrect Email ID or Password Login!" }, null);
+      callback({ status: 401,message: "Incorrect Email ID or Password Login!" }, null);
     }
   } catch (exception) {
     callback({ message: exception }, null);

@@ -2,7 +2,7 @@
 var JwtStrategy = require("passport-jwt").Strategy;
 var ExtractJwt = require("passport-jwt").ExtractJwt;
 const passport = require("passport");
-var config = require("./config");
+const config = require("./config");
 const RestaurantDetails = require("../../Models/RestaurantDetailsModel");
 const CustomerDetails = require("../../Models/CustomerDetailsModel");
 

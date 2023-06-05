@@ -1,4 +1,4 @@
-import Orders from "../../Models/OrdersModel";
+const Orders = require( "../../Models/OrdersModel");
 
 const handle_request = async (orderDetails, callback) => {
   let ts = Date.now();
@@ -27,4 +27,4 @@ const handle_request = async (orderDetails, callback) => {
   }
 };
 
-export default handle_request;
+exports.handle_request = handle_request;

@@ -51,7 +51,7 @@ const OrderModal = (props) => {
   const getCartDetails = async () => {
     try {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/showCartDetails`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/cart/showCartDetails`,
         {
           method: "POST",
           headers: {
@@ -98,7 +98,7 @@ const OrderModal = (props) => {
   const submitNewOrder = async () => {
     try {
       const response = await fetch(
-        `http://${NODE_HOST}:${NODE_PORT}/createNewOrder`,
+        `http://${NODE_HOST}:${NODE_PORT}/v1/cart/createNewOrder`,
         {
           method: "POST",
           headers: {
@@ -161,7 +161,7 @@ const OrderModal = (props) => {
     ) {
       try {
         const response = await fetch(
-          `http://${NODE_HOST}:${NODE_PORT}/addOrdertoCart`,
+          `http://${NODE_HOST}:${NODE_PORT}/v1/cart/addOrdertoCart`,
           {
             method: "POST",
             headers: {

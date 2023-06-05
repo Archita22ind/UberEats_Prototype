@@ -1,4 +1,5 @@
-import Orders from "../../Models/OrdersModel";
+
+const Orders = require("../../Models/OrdersModel");
 
 const handle_request = async (registrationOrders, callback) => {
   let order;
@@ -41,4 +42,4 @@ const handle_request = async (registrationOrders, callback) => {
   }
 };
 
-export default handle_request;
+exports.handle_request = handle_request;
