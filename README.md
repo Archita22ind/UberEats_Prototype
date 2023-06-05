@@ -27,16 +27,6 @@ The project is divided into folder structures Frontend using React JS and Redux 
 
 <img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/systemarch.png" >
 
-### Few screen captures of the application:
-
-<img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/loginPage.png" >
-
-<img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/glimpseofapp.png" >
-
-<img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/glimpse1.png" >
-
-<img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/orderstatus.png" >
-
 ### Some Design Patterns Used:
 
 #### Strategy Pattern:
@@ -63,7 +53,17 @@ The below link highlights this design pattern used for the cart of the applicati
 
 https://github.com/Archita22ind/UberEats_Prototype/tree/main/kafka-backend/services/customer/cart
 
-Note: This part of code is being considered for further enhancement.
+Note: This part of code is being considered for further improvement.
+
+### Few screen captures of the application:
+
+<img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/loginPage.png" >
+
+<img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/glimpseofapp.png" >
+
+<img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/glimpse1.png" >
+
+<img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/orderstatus.png" >
 
 ## Getting Started with the Github repository-
 
