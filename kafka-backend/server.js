@@ -29,15 +29,13 @@ const PastOrders = require("./services/orderService/getPastOrders");
 const CartDetails = require("./services/customer/showCartDetails");
 const FavoriteRestaurant = require("./services/customer/getFavoriteRestaurants");
 const CreateFavorite = require("./services/customer/createFavouritesList");
-// beforre commandpattern
 const UpdateCartDetails = require("./services/customer/updateCartOrderDetails");
-// after commandpattern
 // const UpdateCartDetails = require("./services/customer/cart/cartService");
-
 const NewOrder = require("./services/orderService/createNewOrder");
 const ListOfRestaurants = require("./services/restaurantService/getListOfRestaurants");
-
+// beforre commandpattern
 // const AddOrdertoCart = require("./services/restaurantService/addOrdertoCart"); //working currently
+// after commandpattern
 const AddOrdertoCart = require("./services/customer/cart/cartService");
 const TypeaheadList = require("./services/restaurantService/getTypeaheadList");
 

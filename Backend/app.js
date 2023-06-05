@@ -8,7 +8,7 @@ const path = require("path");
 
 // Custom imports
 const config = require("./Controller/Common/config");
-const authFunctions = require("./Controller/Common/passport"); // renamed from auth and checkAuth to avoid confusion
+const authFunctions = require("./Controller/Common/passport");
 const routes = require("./routes/v1");
 const ApiError = require("./utils/ApiError");
 
@@ -31,19 +31,5 @@ app.use("/v1", routes);
 app.use((req, res, next) => {
   next(new ApiError(httpStatus.NOT_FOUND, "Not found"));
 });
-
-// app.post("/createNewOrder", checkAuth, function (req, res) {
-//   kafka.make_request("newOrder", req.body, function (err, results) {
-//     if (err) {
-//       res.json({
-//         status: "error",
-//         msg: "System Error, Try Again.",
-//       });
-//     } else {
-//       res.status(200).json(results);
-//       res.end();
-//     }
-//   });
-// });
 
 module.exports = app;

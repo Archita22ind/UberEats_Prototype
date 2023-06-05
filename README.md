@@ -23,6 +23,8 @@ All the above main functionalities were incorporated by builiding a functional, 
 
 ### System Architecture Design:
 
+The project is divided into folder structures Frontend using React JS and Redux and 2 server folders - Backend and Kafka-backend, wherein I have used Kafka Messaging queue as per the requirement of the assignment.
+
 <img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/systemarch.png" >
 
 ### Few screen captures of the application:
@@ -34,6 +36,34 @@ All the above main functionalities were incorporated by builiding a functional, 
 <img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/glimpse1.png" >
 
 <img src="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/orderstatus.png" >
+
+### Some Design Patterns Used:
+
+#### Strategy Pattern:
+
+Used Strategy Pattern in finding the list of restaurants by a user/customer. Below two links of code highlight this design pattern being used.
+
+https://github.com/Archita22ind/UberEats_Prototype/blob/main/kafka-backend/services/restaurantService/getListOfRestaurants.js
+
+https://github.com/Archita22ind/UberEats_Prototype/blob/main/kafka-backend/services/restaurantService/model/getListOfRestaurantsDao.js
+
+<img src ="https://github.com/Archita22ind/UberEats_Prototype/blob/main/images/RestaurantListSearchPage.png">
+
+Use Case: A certain restaurant list is returned for display on the landing page based on the typeahead value on the page header, the sidebar filters, and the Pickup or Delivery categories available. There can be several options to filter out the restaurants on the page like Food dietary filter options, any specific food item on the restaurant Menu searched from the typeahead, a combination of both, and even none. So based on these filter criteria, I designed an API to get the restaurant details from the database.
+
+The code for fetching restaurant list data demonstrates modularization, where each file has a specific purpose based on the SRP principle, thus improving maintainability and reusability. For instance, 'getListOfRestaurants.js' handles the request for fetching restaurants, while 'getListOfRestaurantsDao.js' encapsulates the database operations.
+
+The design choice of the Factory Pattern in the 'getListOfRestaurantsDao.js' provides a flexible way to fetch restaurant data based on various conditions. The 'restaurantFetchStrategyFactory' object creates functions for each type of restaurant fetch strategy. Adhering to the Single Responsibility Principle (SRP), the main API function is immune to changes irrespective of the modifications in filter conditions and this implementation ensures that the code remains loosely coupled and any new filter case can be added as a function to the 'restaurantFetchStrategyFactory' object in future.
+
+#### Command Pattern:
+
+Used Command Pattern to design the food item cart manipulation by the customers ordering food. Like using commands like adding food, removing food, etc. This behavioral design pattern helps to turn a request into a standalone object that contains all information about the request and any type of command can be executed on the same object.
+
+The below link highlights this design pattern used for the cart of the application and currently handles add and remove food items command on the cartData object.
+
+https://github.com/Archita22ind/UberEats_Prototype/tree/main/kafka-backend/services/customer/cart
+
+Note: This part of code is being considered for further enhancement.
 
 ## Getting Started with the Github repository-
 
